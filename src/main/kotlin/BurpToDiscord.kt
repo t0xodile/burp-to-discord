@@ -99,7 +99,7 @@ class BurpToDiscord : BurpExtension {
             val options = MutableDataSet()
             options.set(Parser.EXTENSIONS, listOf(TablesExtension.create()))
             val converter = FlexmarkHtmlConverter.builder(options).build()
-            val details = converter.convert(issue?.detail().toString())
+            val details = converter.convert(issue?.detail().toString()).trimEnd().replace("\n", "\n> ")
             val requestResponses = issue?.requestResponses()
             val attachmentsList = JSONArray()
 
